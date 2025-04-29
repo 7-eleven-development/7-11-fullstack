@@ -48,7 +48,8 @@ npm install
 To run unit tests
 ```bash
 npm install --save-dev jest 
-npx jest
+npm install --save-dev babel-jest @babel/preset-envc
+npx jest --config jest.config.js
 ```
 ---
 
