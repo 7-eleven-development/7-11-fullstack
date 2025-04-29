@@ -1,5 +1,10 @@
 # 🌍 7-11 Fullstack Sensor API
 
+Branches purpose is for learning / connecting the backend properly to the system end, will continue working on the branch.
+
+
+
+
 This project is a backend REST API for sensor data collection, built using **Node.js**, **Express**, and **Swagger**. It serves as a foundational platform for working with various environmental sensors like air quality, GPS, pulse, sound, and temperature.
 
 ---
@@ -40,7 +45,11 @@ git clone https://github.com/7-eleven-development/7-11-fullstack.git
 cd 7-11-fullstack
 npm install
 ```
-
+To run unit tests
+```bash
+npm install --save-dev jest 
+npx jest
+```
 ---
 
 ## ▶️ Running the Server
