@@ -17,11 +17,6 @@ app.use(express.json());
 app.use(loggerMiddleware);
 
 
-  app.get("/", (req, res) => {
-    res.status(200).send("Hello, World!");
-  });
-  
-
 
 
   app.use("/error", testErrorRoute)
@@ -30,6 +25,9 @@ app.use(loggerMiddleware);
   app.use("/api/pulse", pulseRoute);
   app.use("/api/sound", soundRoute);
   app.use("/api/temp", tempRoute);
+
+  app.use(express.static('public'));
+
   app.use(errorHandler);  
 
 export default app;

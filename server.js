@@ -3,7 +3,7 @@ import app from "./app.js";
 import { setupSwagger } from "./docs/swagger.js";
 
 // import dotenv from "dotenv";
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3001;
 const server = http.createServer(app);
 setupSwagger(app)
 
