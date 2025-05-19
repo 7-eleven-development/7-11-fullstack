@@ -19,18 +19,49 @@ This project is a backend REST API for sensor data collection, built using **Nod
 7-11-fullstack/
 ├── api/
 │   └── routes/
-│       └── airQualitySensor.js    # Air quality sensor route
+│       ├── airQualitySensor.js     # Routes for air quality sensors
+│       ├── company.js              # Company-related routes
+│       ├── device.js               # Device routes (GET/POST/device data)
+│       ├── gpsSensor.js            # GPS sensor data routes
+│       ├── pulseSensor.js          # Pulse sensor data routes
+│       ├── soundSensor.js          # Sound sensor data routes
+│       ├── tempSensor.js           # Temperature sensor routes
+│       ├── testErrorRoute.js       # Test route for triggering errors
+│       └── users.js                # User auth and registration routes
+│
 ├── controllers/
 │   └── middleware/
-│       └── logger.js              # Custom logging middleware
+│       ├── deviceAccessMiddleware.js # Auth logic for device-level access
+│       ├── errorHandler.js           # Global error handler
+│       ├── helper.js                 # Utility/helper functions
+│       ├── logger.js                 # Custom request logger middleware
+│       └── verifyJWT.js              # JWT authentication middleware
+│
 ├── docs/
-│   └── swagger.js                 # Swagger setup
+│   ├── airQualitySwagger.js       # Swagger docs for air quality
+│   ├── deviceSwagger.js           # Swagger docs for devices
+│   ├── gpsSwagger.js              # Swagger docs for GPS
+│   ├── pulseSwagger.js            # Swagger docs for pulse
+│   ├── soundSwagger.js            # Swagger docs for sound
+│   ├── tempSwagger.js             # Swagger docs for temperature
+│   ├── userSwagger.js             # Swagger docs for user routes
+│   └── swagger.js                 # Swagger base setup file
+│
 ├── models/
-│   └── db.json                    # (optional) Sample data store
-├── app.js                         # Main Express app config
-├── server.js                      # Server + Swagger bootstrapping
+│   ├── db.js                      # DB connection or logic
+│   └── setupDB.js                 # DB setup/initialization script
+│
+├── node_modules/                  # Installed dependencies
+├── .env                           # Environment variables
+├── .gitignore                     # Files/folders to ignore in Git
+├── access.log                     # Request log (generated)
+├── app.js                         # Main Express app setup
+├── error.log                      # Error log (generated)
 ├── package.json                   # Project metadata and dependencies
-└── README.md                      # Project documentation
+├── package-lock.json              # Exact dependency versions
+├── README.md                      # Project documentation
+└── server.js                      # Server entry point and Swagger loader
+
 ```
 
 ---
@@ -48,6 +79,7 @@ This project is a backend REST API for sensor data collection, built using **Nod
 ```bash
 git clone https://github.com/7-eleven-development/7-11-fullstack.git
 cd 7-11-fullstack
+add .env file with JWT_SECRET
 npm install
 ```
 
@@ -76,6 +108,10 @@ Swagger Docs: [http://localhost:8000/api-docs](http://localhost:8000/api-docs)
 =======
 | Sensor          | Endpoint              | Methods |
 |-----------------|------------------------|---------|
+| Company         | `/api/company`         | `GET`, `POST` |
+| User            | `/api/users/register ` | `POST`    |
+| User            | `/api/users/login `    | `POST`    |
+| Device          | `/api/device/:id/latest-data OR /:id/trend`| `GET`  |
 | Air Quality     | `/api/airQuality`      | `GET`, `POST` |
 | GPS             | `/api/gps`             | _Pending_ |
 | Pulse           | `/api/pulse`           | _Pending_ |
